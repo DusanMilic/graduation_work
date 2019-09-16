@@ -1,4 +1,4 @@
-CREATE TYPE "roles" AS ENUM (
+CREATE TYPE "user_type" AS ENUM (
   'VET',
   'PET_OWNER'
 );
@@ -15,23 +15,24 @@ CREATE TYPE "species" AS ENUM (
 );
 
 CREATE TABLE "users" (
-  "id" int,
+  "id" int PRIMARY KEY,
   "full_name" varchar,
+  "user_type" user_type,
   "email" varchar,
-  "password" password
+  "password" varchar
 );
 
 CREATE TABLE "appointments" (
-  "id" int,
+  "id" int PRIMARY KEY,
   "vet_id" int,
   "pet_owner_id" int,
   "pet_id" int,
   "status" appointment_status,
-  "time" datetime
+  "time" timestamp
 );
 
 CREATE TABLE "pets" (
-  "id" int,
+  "id" int PRIMARY KEY,
   "owner" int,
   "name" varchar,
   "feeding_habits" varchar,
@@ -43,13 +44,13 @@ CREATE TABLE "pets" (
 );
 
 CREATE TABLE "photos" (
-  "id" int,
+  "id" int PRIMARY KEY,
   "pet_id" int,
   "photo" bytea
 );
 
 CREATE TABLE "medical_files" (
-  "id" int,
+  "id" int PRIMARY KEY,
   "pet_id" int,
   "createor" int,
   "stats" varchar,
