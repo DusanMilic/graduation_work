@@ -1,17 +1,34 @@
 package com.milic.db.model;
 
-import org.springframework.data.annotation.Id;
+import com.milic.api.model.UserDto;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "users")
 public class User {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "full_name")
   private String fullName;
   private String email;
   private String password;
 
+  @Column(name = "user_type")
+  @Enumerated(EnumType.STRING)
   private UserType userType;
+
+  public User() {}
 
   public Long getId() {
     return id;
@@ -51,5 +68,14 @@ public class User {
 
   public void setUserType(UserType userType) {
     this.userType = userType;
+  }
+
+  public static User fromDto(UserDto dto) {
+    User user = new User();
+    user.setEmail(dto.getEmail());
+    user.setFullName(dto.getFullName());
+    user.setPassword(dto.getPassword());
+    user.setUserType(dto.getUserType());
+    return user;
   }
 }

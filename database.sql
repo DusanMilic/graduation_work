@@ -1,56 +1,41 @@
-CREATE TYPE "user_type" AS ENUM (
-  'VET',
-  'PET_OWNER'
-);
-
-CREATE TYPE "appointment_status" AS ENUM (
-  'PENDING',
-  'APPROVED',
-  'DECLIENED'
-);
-
-CREATE TYPE "species" AS ENUM (
-  'DOG',
-  'CAT'
-);
 
 CREATE TABLE "users" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "full_name" varchar,
-  "user_type" user_type,
+  "user_type" varchar,
   "email" varchar,
   "password" varchar
 );
 
 CREATE TABLE "appointments" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "vet_id" int,
   "pet_owner_id" int,
   "pet_id" int,
-  "status" appointment_status,
+  "status" varchar,
   "time" timestamp
 );
 
 CREATE TABLE "pets" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "owner" int,
   "name" varchar,
   "feeding_habits" varchar,
   "alergies" varchar,
-  "species" species,
+  "species" varchar,
   "breed" varchar,
   "age" int,
   "weight" int
 );
 
 CREATE TABLE "photos" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "pet_id" int,
   "photo" bytea
 );
 
 CREATE TABLE "medical_files" (
-  "id" int PRIMARY KEY,
+  "id" SERIAL PRIMARY KEY,
   "pet_id" int,
   "createor" int,
   "stats" varchar,

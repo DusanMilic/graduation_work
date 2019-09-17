@@ -1,0 +1,11 @@
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/api/controllers/UserController.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/db/model/UserType.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/api/model/UserDto.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/PetServiceApp.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/config/WebSecurityConfig.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/api/model/CredentialsDto.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/db/repositories/UserRepo.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/db/main.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/service/UserService.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/db/model/User.java
+/Users/dmilic/Documents/Projects/Private/Backend/src/main/java/com/milic/config/JpaConfig.java
