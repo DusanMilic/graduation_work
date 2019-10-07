@@ -4,7 +4,9 @@ CREATE TABLE "users" (
   "full_name" varchar,
   "user_type" varchar,
   "email" varchar,
-  "password" varchar
+  "password" varchar,
+  "phone_number" varchar,
+  "first_login" int
 );
 
 CREATE TABLE "appointments" (
@@ -56,3 +58,4 @@ ALTER TABLE "pets" ADD FOREIGN KEY ("owner") REFERENCES "users" ("id");
 ALTER TABLE "appointments" ADD FOREIGN KEY ("vet_id") REFERENCES "users" ("id");
 
 ALTER TABLE "appointments" ADD FOREIGN KEY ("pet_owner_id") REFERENCES "users" ("id");
+
