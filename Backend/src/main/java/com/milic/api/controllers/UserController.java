@@ -35,8 +35,6 @@ public class UserController {
   @PostMapping(value = "/credentials", consumes = "application/json", produces = "application/json")
   public User getByCredentials(@RequestBody CredentialsDto credentialsDto) {
     User user = userService.getByEmail(credentialsDto.getEmail());
-    System.out.println(credentialsDto.getEmail());
-    System.out.println(credentialsDto.getPassword());
     if (user == null || !credentialsDto.getPassword().equals(user.getPassword())) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }

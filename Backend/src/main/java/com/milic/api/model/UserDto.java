@@ -8,6 +8,8 @@ public class UserDto {
   private String password;
   private String email;
   private UserType userType;
+  private String phoneNumber;
+  private int firstLogin;
 
   public String getFullName() {
     return fullName;
@@ -39,5 +41,21 @@ public class UserDto {
 
   public void setUserType(UserType userType) {
     this.userType = userType;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public int getFirstLogin() {
+    return firstLogin;
+  }
+
+  public void setFirstLogin(int firstLogin) {
+    this.firstLogin = firstLogin;
   }
 }

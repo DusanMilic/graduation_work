@@ -23,6 +23,8 @@ public class User {
   private String fullName;
   private String email;
   private String password;
+  private String phoneNumber;
+  private int firstLogin;
 
   @Column(name = "user_type")
   @Enumerated(EnumType.STRING)
@@ -70,12 +72,30 @@ public class User {
     this.userType = userType;
   }
 
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  public int getFirstLogin() {
+    return firstLogin;
+  }
+
+  public void setFirstLogin(int firstLogin) {
+    this.firstLogin = firstLogin;
+  }
+
   public static User fromDto(UserDto dto) {
     User user = new User();
     user.setEmail(dto.getEmail());
     user.setFullName(dto.getFullName());
     user.setPassword(dto.getPassword());
     user.setUserType(dto.getUserType());
+    user.setPhoneNumber(dto.getPhoneNumber());
+    user.setFirstLogin(dto.getFirstLogin());
     return user;
   }
 }
