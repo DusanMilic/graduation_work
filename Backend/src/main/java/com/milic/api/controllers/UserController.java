@@ -32,6 +32,11 @@ public class UserController {
     return userService.create(userDto);
   }
 
+  @RequestMapping("/logedIn/{userId}")
+  public void changeLogedIn(@PathVariable("userId") long userId) {
+    userService.changeUserLogedIn(userId);
+  }
+
   @PostMapping(value = "/credentials", consumes = "application/json", produces = "application/json")
   public User getByCredentials(@RequestBody CredentialsDto credentialsDto) {
     User user = userService.getByEmail(credentialsDto.getEmail());
