@@ -1,11 +1,13 @@
 package com.milic.service;
 
 import com.milic.api.model.AppointmentDto;
+import com.milic.db.model.AppointmentStatus;
 import com.milic.db.model.Appointment;
 import com.milic.db.model.Pet;
 import com.milic.db.model.User;
 import com.milic.db.repositories.AppointmentRepo;
 import java.time.ZoneId;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +34,14 @@ public class AppointmentService {
     appointment.setPet(pet);
     appointment.setPetOwner(owner);
     appointment.setVet(vet);
-    appointment.setAppiontmentStatus(dto.getStatus());
+    appointment.setAppointmentStatus(dto.getStatus());
     appointment.setTime(dto.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
     return appointmentRepo.save(appointment);
   }
+
+  public List<Appointment> getByStatusAndUserId(AppointmentStatus status, Long userId) {
+    return appointmentRepo.findByAppointmentStatusAndVetId(status, userId);
+  }
+
+
 }

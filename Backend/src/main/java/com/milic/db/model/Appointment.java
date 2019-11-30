@@ -34,7 +34,7 @@ public class Appointment {
 
   @Column(name = "status")
   @Enumerated(EnumType.STRING)
-  private AppiontmentStatus appiontmentStatus;
+  private AppointmentStatus appointmentStatus;
 
   private LocalDateTime time;
 
@@ -70,12 +70,12 @@ public class Appointment {
     this.pet = pet;
   }
 
-  public AppiontmentStatus getAppiontmentStatus() {
-    return appiontmentStatus;
+  public AppointmentStatus getAppointmentStatus() {
+    return appointmentStatus;
   }
 
-  public void setAppiontmentStatus(AppiontmentStatus appiontmentStatus) {
-    this.appiontmentStatus = appiontmentStatus;
+  public void setAppointmentStatus(AppointmentStatus appointmentStatus) {
+    this.appointmentStatus = appointmentStatus;
   }
 
   public LocalDateTime getTime() {

@@ -1,14 +1,14 @@
 package com.milic.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.milic.db.model.AppiontmentStatus;
+import com.milic.db.model.AppointmentStatus;
 import java.util.Date;
 
 public class AppointmentDto {
   private long vetId;
   private long petOwnerId;
   private long petId;
-  private AppiontmentStatus status = AppiontmentStatus.WAITING;
+  private AppointmentStatus status = AppointmentStatus.WAITING;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
   private Date date;
 
@@ -44,11 +44,11 @@ public class AppointmentDto {
     this.petId = petId;
   }
 
-  public AppiontmentStatus getStatus() {
+  public AppointmentStatus getStatus() {
     return status;
   }
 
-  public void setStatus(AppiontmentStatus status) {
+  public void setStatus(AppointmentStatus status) {
     this.status = status;
   }
 }
