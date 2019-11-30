@@ -35,6 +35,10 @@ public class UserService {
     return maybeUser.orElse(null);
   }
 
+  public User getById(Long id) {
+    return userRepo.findById(id).orElse(null);
+  }
+
   public void changeUserLogedIn(Long userId){
     User user = userRepo.findById(userId).orElse(null);
     if(user != null){

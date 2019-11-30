@@ -26,7 +26,7 @@ public class Appointment {
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "pet_owner_id")
-  private User pwtOwner;
+  private User petOwner;
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "pet_id")
@@ -54,12 +54,12 @@ public class Appointment {
     this.vet = vet;
   }
 
-  public User getPwtOwner() {
-    return pwtOwner;
+  public User getPetOwner() {
+    return petOwner;
   }
 
-  public void setPwtOwner(User pwtOwner) {
-    this.pwtOwner = pwtOwner;
+  public void setPetOwner(User petOwner) {
+    this.petOwner = petOwner;
   }
 
   public Pet getPet() {
