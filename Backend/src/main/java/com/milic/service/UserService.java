@@ -2,7 +2,9 @@ package com.milic.service;
 
 import com.milic.api.model.UserDto;
 import com.milic.db.model.User;
+import com.milic.db.model.UserType;
 import com.milic.db.repositories.UserRepo;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
@@ -22,6 +24,10 @@ public class UserService {
 
   public User create(UserDto userDto) {
     return userRepo.save(User.fromDto(userDto));
+  }
+
+  public List<User> getByType(UserType userType) {
+    return userRepo.findByUserType(userType);
   }
 
   public User getByEmail(String email) {
