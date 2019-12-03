@@ -1,4 +1,3 @@
-
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
   "full_name" varchar,
@@ -21,13 +20,31 @@ CREATE TABLE "appointments" (
 CREATE TABLE "pets" (
   "id" SERIAL PRIMARY KEY,
   "owner" int,
+  "pet_info_id" int,
+  "medical_info_id" int,
   "name" varchar,
   "feeding_habits" varchar,
-  "alergies" varchar,
   "species" varchar,
   "breed" varchar,
   "age" int,
   "weight" int
+);
+
+CREATE TABLE "pet_info" (
+  "id" SERIAL PRIMARY KEY,
+  "indoor" varchar,
+  "food_type" varchar,
+  "meal_size" varchar,
+  "meals_per_day" int,
+  "physical_activity" varchar,
+  "traveling" varchar
+);
+
+CREATE TABLE "medical_info" (
+  "id" SERIAL PRIMARY KEY,
+  "allergies" varchar,
+  "diseases" varchar,
+  "treatments" varchar
 );
 
 CREATE TABLE "photos" (
@@ -55,7 +72,10 @@ ALTER TABLE "photos" ADD FOREIGN KEY ("pet_id") REFERENCES "pets" ("id");
 
 ALTER TABLE "pets" ADD FOREIGN KEY ("owner") REFERENCES "users" ("id");
 
+ALTER TABLE "pets" ADD FOREIGN KEY ("pet_info_id") REFERENCES "pet_info" ("id");
+
+ALTER TABLE "pets" ADD FOREIGN KEY ("medical_info_id") REFERENCES "medical_info" ("id");
+
 ALTER TABLE "appointments" ADD FOREIGN KEY ("vet_id") REFERENCES "users" ("id");
 
 ALTER TABLE "appointments" ADD FOREIGN KEY ("pet_owner_id") REFERENCES "users" ("id");
-

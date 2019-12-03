@@ -43,5 +43,10 @@ public class AppointmentService {
     return appointmentRepo.findByAppointmentStatusAndVetId(status, userId);
   }
 
-
+  public Appointment updateStatus(Long appId, AppointmentStatus status) {
+    Appointment appointment = appointmentRepo.findById(appId).orElseThrow(RuntimeException::new);
+    appointment.setAppointmentStatus(status);
+    appointmentRepo.save(appointment);
+    return appointment;
+  }
 }

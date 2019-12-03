@@ -1,6 +1,8 @@
 package com.milic.api.controllers;
 
+import com.milic.api.model.MedicalInfoDto;
 import com.milic.api.model.PetDto;
+import com.milic.api.model.PetInfoDto;
 import com.milic.db.model.Pet;
 import com.milic.service.PetService;
 import java.util.List;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/v1/pets")
+@RequestMapping(value = "/v1/pets", consumes = "application/json", produces = "application/json")
 public class PetController {
 
   private final PetService petService;
@@ -34,6 +36,29 @@ public class PetController {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
+    return pet;
+  }
+
+  @PostMapping("/pet_info/")
+  public Pet createPetInfo(@RequestBody PetInfoDto petInfoDto) {
+    Pet pet;
+    try {
+      pet = petService.createPetInfo(petInfoDto);
+    } catch (RuntimeException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+    }
+
+    return pet;
+  }
+
+  @PostMapping("/medical_info/")
+  public Pet createMedicalInfo(@RequestBody MedicalInfoDto medicalInfoDto) {
+    Pet pet;
+    try {
+      pet = petService.createMedicalInfo(medicalInfoDto);
+    } catch (RuntimeException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+    }
     return pet;
   }
 

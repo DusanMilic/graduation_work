@@ -1,15 +1,20 @@
 package com.milic.api.controllers;
 
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import com.milic.api.model.AppointmentDto;
 import com.milic.db.model.Appointment;
 import com.milic.db.model.AppointmentStatus;
 import com.milic.service.AppointmentService;
 import java.util.List;
+import javax.xml.ws.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,9 +33,18 @@ public class AppointmentController {
     return appointmentService.create(dto);
   }
 
+  @PostMapping("/{appId}/{appointmentStatus}")
+  Appointment updateStatus(@PathVariable("appId") long appId,
+                           @PathVariable("appointmentStatus") AppointmentStatus status) {
+    return appointmentService.updateStatus(appId, status);
+  }
+
   @RequestMapping("/{vetId}/{appointmentStatus}")
   List<Appointment> getByTypeAndVetId(@PathVariable("vetId") long vetId,
                                       @PathVariable("appointmentStatus") AppointmentStatus status) {
     return appointmentService.getByStatusAndUserId(status, vetId);
   }
+
+
+
 }

@@ -9,7 +9,6 @@ public class PetDto {
   private Long ownerId;
   private String name;
   private String feedingHabits;
-  private String alergies;
   private String breed;
   private int age;
   private int weight;
@@ -45,14 +44,6 @@ public class PetDto {
 
   public void setFeedingHabits(String feedingHabits) {
     this.feedingHabits = feedingHabits;
-  }
-
-  public String getAlergies() {
-    return alergies;
-  }
-
-  public void setAlergies(String alergies) {
-    this.alergies = alergies;
   }
 
   public String getBreed() {
