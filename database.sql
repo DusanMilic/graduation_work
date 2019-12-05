@@ -22,6 +22,7 @@ CREATE TABLE "pets" (
   "owner" int,
   "pet_info_id" int,
   "medical_info_id" int,
+  "pet_profile_picture" int,
   "name" varchar,
   "feeding_habits" varchar,
   "species" varchar,
@@ -71,6 +72,8 @@ ALTER TABLE "medical_files" ADD FOREIGN KEY ("pet_id") REFERENCES "pets" ("id");
 ALTER TABLE "photos" ADD FOREIGN KEY ("pet_id") REFERENCES "pets" ("id");
 
 ALTER TABLE "pets" ADD FOREIGN KEY ("owner") REFERENCES "users" ("id");
+
+ALTER TABLE "pets" ADD FOREIGN KEY ("pet_profile_picture") REFERENCES "photos" ("id");
 
 ALTER TABLE "pets" ADD FOREIGN KEY ("pet_info_id") REFERENCES "pet_info" ("id");
 

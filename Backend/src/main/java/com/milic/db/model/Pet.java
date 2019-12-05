@@ -32,6 +32,10 @@ public class Pet {
   @JoinColumn(name = "medical_info_id")
   private MedicalInfo medicalInfo;
 
+  @OneToOne
+  @JoinColumn(name = "pet_profile_picture")
+  private Photo photo;
+
   private String name;
   private String feedingHabits;
   private String breed;
@@ -40,6 +44,14 @@ public class Pet {
 
   @Enumerated(EnumType.STRING)
   private Species species;
+
+  public Photo getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(Photo photo) {
+    this.photo = photo;
+  }
 
   public Long getId() {
     return id;
