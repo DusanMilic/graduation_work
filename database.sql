@@ -28,7 +28,7 @@ CREATE TABLE "pets" (
   "species" varchar,
   "breed" varchar,
   "age" int,
-  "weight" int
+  "weight" float
 );
 
 CREATE TABLE "pet_info" (
