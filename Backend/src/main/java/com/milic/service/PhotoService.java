@@ -41,7 +41,7 @@ public class PhotoService {
       photo = create(dto);
     }
     Pet pet = petRepo.findById((long)dto.getPetId()).orElseThrow(RuntimeException::new);
-    pet.setPhoto(photo);
+    pet.setPetProfilePicture(photo.getId());
     return petRepo.save(pet);
   }
 
