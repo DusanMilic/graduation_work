@@ -37,10 +37,9 @@ public class Pet {
   private Photo photo;
 
   private String name;
-  private String feedingHabits;
   private String breed;
   private int age;
-  private int weight;
+  private float weight;
 
   @Enumerated(EnumType.STRING)
   private Species species;
@@ -77,14 +76,6 @@ public class Pet {
     this.name = name;
   }
 
-  public String getFeedingHabits() {
-    return feedingHabits;
-  }
-
-  public void setFeedingHabits(String feedingHabits) {
-    this.feedingHabits = feedingHabits;
-  }
-
   public String getBreed() {
     return breed;
   }
@@ -101,11 +92,11 @@ public class Pet {
     this.age = age;
   }
 
-  public int getWeight() {
+  public float getWeight() {
     return weight;
   }
 
-  public void setWeight(int weight) {
+  public void setWeight(float weight) {
     this.weight = weight;
   }
 
@@ -137,7 +128,6 @@ public class Pet {
     Pet pet = new Pet();
     pet.setAge(petDto.getAge());
     pet.setBreed(petDto.getBreed());
-    pet.setFeedingHabits(petDto.getFeedingHabits());
     pet.setName(petDto.getName());
     pet.setSpecies(petDto.getSpecies());
     pet.setWeight(petDto.getWeight());

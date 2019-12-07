@@ -8,10 +8,9 @@ public class PetDto {
 
   private Long ownerId;
   private String name;
-  private String feedingHabits;
   private String breed;
   private int age;
-  private int weight;
+  private float weight;
   private Species species;
 
   public Long getId() {
@@ -38,14 +37,6 @@ public class PetDto {
     this.name = name;
   }
 
-  public String getFeedingHabits() {
-    return feedingHabits;
-  }
-
-  public void setFeedingHabits(String feedingHabits) {
-    this.feedingHabits = feedingHabits;
-  }
-
   public String getBreed() {
     return breed;
   }
@@ -62,11 +53,11 @@ public class PetDto {
     this.age = age;
   }
 
-  public int getWeight() {
+  public float getWeight() {
     return weight;
   }
 
-  public void setWeight(int weight) {
+  public void setWeight(float weight) {
     this.weight = weight;
   }
 
