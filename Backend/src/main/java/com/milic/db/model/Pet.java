@@ -1,5 +1,6 @@
 package com.milic.db.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.milic.api.model.PetDto;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,6 +35,7 @@ public class Pet {
 
   @OneToOne
   @JoinColumn(name = "pet_profile_picture")
+  @JsonIgnore
   private Photo photo;
 
   private String name;
