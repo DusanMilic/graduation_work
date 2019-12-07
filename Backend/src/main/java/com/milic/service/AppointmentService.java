@@ -39,8 +39,8 @@ public class AppointmentService {
     return appointmentRepo.save(appointment);
   }
 
-  public List<Appointment> getByStatusAndUserId(AppointmentStatus status, Long userId) {
-    return appointmentRepo.findByAppointmentStatusAndVetId(status, userId);
+  public List<Appointment> getByUserId(Long userId) {
+    return appointmentRepo.findByVetId(userId);
   }
 
   public Appointment updateStatus(Long appId, AppointmentStatus status) {

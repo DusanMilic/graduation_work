@@ -39,10 +39,9 @@ public class AppointmentController {
     return appointmentService.updateStatus(appId, status);
   }
 
-  @RequestMapping("/{vetId}/{appointmentStatus}")
-  List<Appointment> getByTypeAndVetId(@PathVariable("vetId") long vetId,
-                                      @PathVariable("appointmentStatus") AppointmentStatus status) {
-    return appointmentService.getByStatusAndUserId(status, vetId);
+  @RequestMapping("/{vetId}")
+  List<Appointment> getByTypeAndVetId(@PathVariable("vetId") long vetId) {
+    return appointmentService.getByUserId(vetId);
   }
 
 
