@@ -48,6 +48,13 @@ CREATE TABLE "medical_info" (
   "treatments" varchar
 );
 
+CREATE TABLE "measurements" (
+  "id" SERIAL PRIMARY KEY,
+  "pet_id" int,
+  "measure" float,
+  "time" timestamp
+);
+
 CREATE TABLE "photos" (
   "id" SERIAL PRIMARY KEY,
   "pet_id" int,
@@ -82,3 +89,5 @@ ALTER TABLE "pets" ADD FOREIGN KEY ("medical_info_id") REFERENCES "medical_info"
 ALTER TABLE "appointments" ADD FOREIGN KEY ("vet_id") REFERENCES "users" ("id");
 
 ALTER TABLE "appointments" ADD FOREIGN KEY ("pet_owner_id") REFERENCES "users" ("id");
+
+ALTER TABLE "measurements" ADD FOREIGN KEY ("pet_id") REFERENCES "pets" ("id");
