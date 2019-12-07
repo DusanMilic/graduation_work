@@ -9,7 +9,7 @@ public class AppointmentDto {
   private long petOwnerId;
   private long petId;
   private AppointmentStatus status = AppointmentStatus.WAITING;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
   private Date date;
 
   public Date getDate() {

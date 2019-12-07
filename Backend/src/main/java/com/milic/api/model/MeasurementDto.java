@@ -8,7 +8,7 @@ public class MeasurementDto {
   private Long id;
   private Long petId;
   private float measure;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
   private Date time;
 
   public Long getId() {

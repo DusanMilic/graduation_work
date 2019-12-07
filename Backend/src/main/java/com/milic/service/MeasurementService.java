@@ -3,6 +3,8 @@ package com.milic.service;
 import com.milic.api.model.MeasurementDto;
 import com.milic.db.model.Measurement;
 import com.milic.db.repositories.MeasurementRepo;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class MeasurementService {
   }
 
   public List<Measurement> getByPetId(Long petId) {
-    return repo.findByPetId(petId);
+    List<Measurement> list = repo.findByPetId(petId);
+    list.sort(Comparator.comparing(Measurement::getTime));
+    return list;
   }
 }
