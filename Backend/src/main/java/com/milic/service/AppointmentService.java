@@ -6,8 +6,11 @@ import com.milic.db.model.Appointment;
 import com.milic.db.model.Pet;
 import com.milic.db.model.User;
 import com.milic.db.repositories.AppointmentRepo;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +45,16 @@ public class AppointmentService {
   public List<Appointment> getByUserId(Long userId) {
     return appointmentRepo.findByVetId(userId);
   }
+
+  public List<Appointment> getByVetAndDate(Long vetId, Date dateFrom, Date dateTo) {
+    LocalDateTime from = dateFrom.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    LocalDateTime to = dateTo.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    List<Appointment> appointments = getByUserId(vetId);
+    return appointments.stream().filter(
+        p -> p.getTime().isAfter(from) && p.getTime().isBefore(to)).collect(
+        Collectors.toList());
+  }
+
 
   public Appointment updateStatus(Long appId, AppointmentStatus status) {
     Appointment appointment = appointmentRepo.findById(appId).orElseThrow(RuntimeException::new);
