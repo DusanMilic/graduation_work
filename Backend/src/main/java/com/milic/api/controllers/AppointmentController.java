@@ -46,7 +46,7 @@ public class AppointmentController {
     return appointmentService.getByVetAndDate(vetId, dto.getDateFrom(), dto.getDateTo());
   }
 
-  @RequestMapping("/{vetId}")
+  @RequestMapping("/{vetId}/")
   List<Appointment> getByTypeAndVetId(@PathVariable("vetId") long vetId) {
     return appointmentService.getByUserId(vetId);
   }

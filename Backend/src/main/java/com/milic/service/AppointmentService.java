@@ -3,11 +3,13 @@ package com.milic.service;
 import com.milic.api.model.AppointmentDto;
 import com.milic.db.model.AppointmentStatus;
 import com.milic.db.model.Appointment;
+import com.milic.db.model.Measurement;
 import com.milic.db.model.Pet;
 import com.milic.db.model.User;
 import com.milic.db.repositories.AppointmentRepo;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,9 +52,11 @@ public class AppointmentService {
     LocalDateTime from = dateFrom.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     LocalDateTime to = dateTo.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     List<Appointment> appointments = getByUserId(vetId);
-    return appointments.stream().filter(
+    List<Appointment> collect = appointments.stream().filter(
         p -> p.getTime().isAfter(from) && p.getTime().isBefore(to)).collect(
         Collectors.toList());
+    collect.sort(Comparator.comparing(Appointment::getTime));
+    return collect;
   }
 
 
